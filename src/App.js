@@ -6,7 +6,6 @@ function App() {
   const [ computerOrder, setComputerOrder ] = useState([]);
   const [ playerOrder, setPlayerOrder ] = useState([]);
 
-
   const handleBlink=(event)=>{
     event.target.style.opacity = 1;
     setTimeout(()=>{
