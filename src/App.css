@@ -4,7 +4,7 @@
   background-color: black;
   height: 400px;
   width: 400px;
-  margin: -45px;
+  margin: 0 auto;
   border-radius: 50%;
 }
 
@@ -12,25 +12,8 @@
 #game-container{
   position: relative;
   text-align: center;
-  margin: 150px;
-}
-
-/* top */
-#logo-circle{
-  border-radius: 50%;
-  color: white;
-  background-color: black;
-
-  width: 150px;
-  height: 150px;
-  
-  position: absolute;
-  margin: 80px 80px;
-}
-
-#logo-text{
-  font-size: 40px;
-  margin-top: 40px;
+  /* margin: 150px; */
+  margin: 50px 30%;
 }
 
 /* bottom */
@@ -38,7 +21,7 @@
   position: absolute;
   width: 150px;
   height: 150px;
-  position: absolute;
+  margin: 45px 10%;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -52,18 +35,37 @@
   transition: .5s;
 }
 
-.box.box-0 {
+#box-0 {
   border-top-left-radius: 50%;
 }
 
-.box.box-1 {
+#box-1 {
   border-top-right-radius: 50%;
 }
 
-.box.box-2 {
+#box-2 {
   border-bottom-left-radius: 50%;
 }
 
-.box.box-3 {
+#box-3 {
   border-bottom-right-radius: 50%;
+}
+
+/* top */
+#logo-circle{
+  border-radius: 50%;
+  color: white;
+  background-color: black;
+
+  width: 150px;
+  height: 150px;
+  
+  position: absolute;
+  margin: 120px 28%;
+}
+
+#logo-text{
+  font-size: 40px;
+  margin-top: 40px;
+  text-align: center;
 }

@@ -12,21 +12,25 @@ function App() {
     setComputerOrder(newComputerOrder);
   }
 
-  const showComputerOrder=()=>{
+  // // go through every box of computerOrder, and we want it to blink. We need to do a handleClick by just passing the index, but we can't do that right now.
+  // const showComputerOrder=()=>{
+  //   for (let box of computerOrder) {
 
-  }
+  //   }
+  // }
 
-
-  const handleBlink=(event)=>{
-    event.target.style.opacity = 1;
-    setTimeout(()=>{
-      event.target.style.opacity = .5;
-    }, 333)
-  }
+  // const handleBlink=(event)=>{
+  //   event.target.style.opacity = 1;
+  //   setTimeout(()=>{
+  //     event.target.style.opacity = .5;
+  //   }, 333)
+  // }
 
   const handleClickBox=(boxIndex, e)=>{
-    handleBlink(e);
-    handleAddRandomBox();
+
+
+    // handleBlink(e);
+    // handleAddRandomBox();
   }
 
   let boxesElArr = boxes.map((color, index)=>{
@@ -35,7 +39,8 @@ function App() {
         key={index}
         onClick={(e)=>handleClickBox(index, e)} 
         style={{ backgroundColor: color }} 
-        className= {"box box-" + index}
+        id={"box-"+index}
+        className= {"box"}
       ></div>
     )
   })
