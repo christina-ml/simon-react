@@ -3,8 +3,19 @@ import './App.css';
 
 function App() {
   const boxes = ["green", "red", "yellow", "blue"];
-  const [ computerOrder, setComputerOrder ] = useState([]);
-  const [ playerOrder, setPlayerOrder ] = useState([]);
+  const [ computerOrder, setComputerOrder ] = useState([ 3 ]);
+  // const [ playerOrder, setPlayerOrder ] = useState([]);
+
+  const handleAddRandomBox=()=>{
+    let randomIndex = Math.floor(Math.random()*4)
+    let newComputerOrder = [ ...computerOrder, randomIndex ]
+    setComputerOrder(newComputerOrder);
+  }
+
+  const showComputerOrder=()=>{
+
+  }
+
 
   const handleBlink=(event)=>{
     event.target.style.opacity = 1;
@@ -15,6 +26,7 @@ function App() {
 
   const handleClickBox=(boxIndex, e)=>{
     handleBlink(e);
+    handleAddRandomBox();
   }
 
   let boxesElArr = boxes.map((color, index)=>{
@@ -48,3 +60,8 @@ function App() {
 }
 
 export default App;
+
+
+// using spread operator
+  // randomly generate an index that chooses a color. Number between 0 and 4
+  // can also write like this: let newComputerOrder = [ ...computerOrder, Math.floor(Math.random()*4) ]
