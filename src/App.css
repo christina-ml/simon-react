@@ -10,7 +10,7 @@
 
 /* outer */
 #game-container{
-  position: relative;
+  position: fixed;
   text-align: center;
   /* margin: 150px; */
   margin: 50px 30%;
@@ -18,10 +18,10 @@
 
 /* bottom */
 #boxes-container{
-  position: absolute;
+  position: relative;
   width: 150px;
   height: 150px;
-  margin: 45px 10%;
+  margin: 30% 30%;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -60,8 +60,8 @@
   width: 150px;
   height: 150px;
   
-  position: absolute;
-  margin: 120px 28%;
+  position: relative;
+  margin: -80% 80%;
 }
 
 #logo-text{
