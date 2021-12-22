@@ -4,8 +4,9 @@ import './App.css';
 function App() {
   const boxes = ["green", "red", "yellow", "blue"];
   const [ computerOrder, setComputerOrder ] = useState([ 3, 0, 1, 2 ]);
-  // const [ playerOrder, setPlayerOrder ] = useState([]);
+  const [ playerOrder, setPlayerOrder ] = useState([]);
   const [ selectedBox, setSelectedBox ] = useState(null);
+  const [ isGameOver, setIsGameOver ] = useState(false);
 
   const handleAddRandomBox=()=>{
     let randomIndex = Math.floor(Math.random()*4)
@@ -24,7 +25,6 @@ function App() {
     }
   }
 
-
   useEffect(()=>{
     showComputerOrder();
   }, [])
@@ -35,9 +35,27 @@ function App() {
       setSelectedBox(null)
     }, 333)
   }
+  
+  const handleClickBox=(boxIndex)=>{
+    handleBlink(boxIndex);
 
-  const handleClickBox=(boxIndex, e)=>{
+    let isCorrectOrder = true;
+    let newPlayerOrder = [ ...playerOrder, boxIndex ];
+
+    for (let i = 0; i < playerOrder.length; i++){
+      if (newPlayerOrder[i] !== computerOrder[i]){
+        isCorrectOrder = false;
+      }
+    }
+
+    if (!isCorrectOrder){
+      setIsGameOver(true);
+      return;
+    }
+
+    setPlayerOrder([ ...newPlayerOrder, boxIndex ])
     // handleBlink(boxIndex);
+    // handleAddRandomBox();
   }
 
   // can control css dynamically using ternary, using `selectedBox` that we stored in state.
@@ -45,9 +63,9 @@ function App() {
     return (
       <div 
         key={index}
-        onClick={(e)=>handleClickBox(index, e)} 
+        onClick={()=>handleClickBox(index)} 
         style={{ backgroundColor: color, opacity: selectedBox === index ? 1 : 0.5}} 
-        id={"box-"+index}
+        id={"box-"+index} // greg removed the id for his code
         className= {"box"}
       ></div>
     )
@@ -59,7 +77,10 @@ function App() {
       </div>
 
       <div id="boxes-container">
-        { boxesElArr }
+        { !isGameOver && boxesElArr }
+        { isGameOver &&
+          <h1>Game over!!</h1> 
+        }
       </div>
 
       <div id="logo-circle">
@@ -85,3 +106,14 @@ export default App;
   // there's no delay in the `for loop`, so it changes very quickly.
   // adding a for loop wiht a setTimeout. that's going to be for "when" they blink.
   // need spaces between each one, so multiply the timeout seconds by the (index + 1)
+
+
+     /*
+   handleClickBox:
+    1. want to blink the box you click on. Are you following the computer? 
+    [ 2, 3, 1, 0 ] // Computer
+    [ 2, 3 ] // Player
+
+    How do I verify that the player is correct?
+    // iterate through our newPlayerOrder, for our newly selected box.
+    */

@@ -1,3 +1,7 @@
+h1{
+  color: white;
+}
+
 /* background outer */
 #game-background{
   position: absolute;
@@ -12,8 +16,8 @@
 #game-container{
   position: fixed;
   text-align: center;
-  /* margin: 150px; */
-  margin: 50px 30%;
+  /* margin: 50px 30%; */
+  margin: 10px 10px;
 }
 
 /* bottom */
@@ -66,6 +70,6 @@
 
 #logo-text{
   font-size: 40px;
-  margin-top: 40px;
+  padding-top: 30%;
   text-align: center;
 }
