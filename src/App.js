@@ -3,30 +3,21 @@ import './App.css';
 
 function App() {
   const boxes = ["green", "red", "yellow", "blue"];
-  const [ computerOrder, setComputerOrder ] = useState([ 3, 0, 1, 2 ]);
+  const [ computerOrder, setComputerOrder ] = useState([ 3 ]);
   const [ playerOrder, setPlayerOrder ] = useState([]);
   const [ selectedBox, setSelectedBox ] = useState(null);
   const [ isGameOver, setIsGameOver ] = useState(false);
 
-  const handleAddRandomBox=()=>{
-    let randomIndex = Math.floor(Math.random()*4)
-    let newComputerOrder = [ ...computerOrder, randomIndex ]
-    setComputerOrder(newComputerOrder);
-  }
-
-  const showComputerOrder=()=>{
-
-    for (let i = 0; i < computerOrder.length; i++) {
-
+  const showPattern=(pattern)=>{
+    for (let i = 0; i < pattern.length; i++) {
       setTimeout(()=>{
-        handleBlink(computerOrder[i]);
+        handleBlink(pattern[i]);
       }, 500*(i+1));
-
     }
   }
 
   useEffect(()=>{
-    showComputerOrder();
+    showPattern(computerOrder);
   }, [])
 
   const handleBlink=(index)=>{
@@ -52,8 +43,16 @@ function App() {
       setIsGameOver(true);
       return;
     }
+    
+    if (newPlayerOrder.length === computerOrder.length){
+      newPlayerOrder = [];
+      let randomIndex = Math.floor(Math.random()*4)
+      let newComputerOrder = [ ...computerOrder, randomIndex ]
+      setComputerOrder(newComputerOrder);
+      showPattern(newComputerOrder);
+    }
 
-    setPlayerOrder([ ...newPlayerOrder, boxIndex ])
+    setPlayerOrder(newPlayerOrder)
     // handleBlink(boxIndex);
     // handleAddRandomBox();
   }
