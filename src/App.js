@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const boxes = ["yellow", "blue", "red", "green"];
+  const boxes = ["green", "red", "yellow", "blue"];
   const [ computerOrder, setComputerOrder ] = useState([]);
   const [ playerOrder, setPlayerOrder ] = useState([]);
 
@@ -23,13 +23,26 @@ function App() {
         key={index}
         onClick={(e)=>handleClickBox(index, e)} 
         style={{ backgroundColor: color }} 
-        className= {"box"}
+        className= {"box box-" + index}
       ></div>
     )
   })
   return (
-    <div id="boxes-container">
-      { boxesElArr }
+    <div id="game-container">
+      <div id="game-background">
+        {/* game background */}
+      </div>
+
+      <div id="boxes-container">
+        { boxesElArr }
+      </div>
+
+      <div id="logo-circle">
+        <div id="logo-text">
+          simon
+        </div>
+      </div>
+        
     </div>
   );
 }

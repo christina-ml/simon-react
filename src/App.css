@@ -1,13 +1,69 @@
+/* background outer */
+#game-background{
+  position: absolute;
+  background-color: black;
+  height: 400px;
+  width: 400px;
+  margin: -45px;
+  border-radius: 50%;
+}
+
+/* outer */
+#game-container{
+  position: relative;
+  text-align: center;
+  margin: 150px;
+}
+
+/* top */
+#logo-circle{
+  border-radius: 50%;
+  color: white;
+  background-color: black;
+
+  width: 150px;
+  height: 150px;
+  
+  position: absolute;
+  margin: 80px 80px;
+}
+
+#logo-text{
+  font-size: 40px;
+  margin-top: 40px;
+}
+
+/* bottom */
 #boxes-container{
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 1px;
-  width: 200px;
-  margin: 100px auto;
+  grid-gap: 10px;
 }
 
 .box{
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   opacity: .5;
+  transition: .5s;
+}
+
+.box.box-0 {
+  border-top-left-radius: 50%;
+}
+
+.box.box-1 {
+  border-top-right-radius: 50%;
+}
+
+.box.box-2 {
+  border-bottom-left-radius: 50%;
+}
+
+.box.box-3 {
+  border-bottom-right-radius: 50%;
 }
