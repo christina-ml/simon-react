@@ -3,28 +3,28 @@ import './App.css';
 
 function App() {
   const boxes = ["green", "red", "yellow", "blue"];
-  const [ computerOrder, setComputerOrder ] = useState([ 3 ]);
+  const [ computerOrder, setComputerOrder ] = useState([ ]);
   const [ playerOrder, setPlayerOrder ] = useState([]);
   const [ selectedBox, setSelectedBox ] = useState(null);
   const [ isGameOver, setIsGameOver ] = useState(false);
 
-  const showPattern=(pattern)=>{
+  const showPattern=(pattern, milliSecs=500)=>{
     for (let i = 0; i < pattern.length; i++) {
       setTimeout(()=>{
         handleBlink(pattern[i]);
-      }, 500*(i+1));
+      }, milliSecs*(i+1));
     }
   }
 
   useEffect(()=>{
-    showPattern(computerOrder);
+    showPattern([ 0, 1, 3, 2, 0, 1, 3, 2 ], 175);
   }, [])
 
-  const handleBlink=(index)=>{
+  const handleBlink=(index, milliSecs=333)=>{
     setSelectedBox(index)
     setTimeout(()=>{
       setSelectedBox(null)
-    }, 333)
+    }, milliSecs)
   }
   
   const handleClickBox=(boxIndex)=>{
@@ -53,9 +53,14 @@ function App() {
     }
 
     setPlayerOrder(newPlayerOrder)
-    // handleBlink(boxIndex);
-    // handleAddRandomBox();
   }
+
+  let handleStartGame=()=>{
+    let initialOrder = [ 3 ];
+    setComputerOrder(initialOrder);
+    showPattern(initialOrder);
+  }
+
 
   // can control css dynamically using ternary, using `selectedBox` that we stored in state.
   let boxesElArr = boxes.map((color, index)=>{
@@ -84,10 +89,12 @@ function App() {
 
       <div id="logo-circle">
         <div id="logo-text">
-          simon
+          <div>
+            simon
+          </div>
+          <button onClick={handleStartGame}>Start</button>
         </div>
       </div>
-        
     </div>
   );
 }
